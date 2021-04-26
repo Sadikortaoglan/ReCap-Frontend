@@ -1,1 +1,71 @@
-<p>cart works!</p>
+<app-navi></app-navi>
+<br>
+<div class="container" >
+  <div class="card shopping-cart">
+    <div class="card-header bg-dark text-light">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      Sepetiniz
+    </div>
+    <div class="card-body">
+      <!-- PRODUCT -->
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-2 text-center">
+          <img class="img-responsive" src="{{baseUrl}}/{{cartItem.car.imagePath}}" alt="prewiew" width="120" height="80">
+        </div>
+        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+          <h4 class="product-name"><strong>{{cartItem.car.brandName}}</strong></h4>
+          <h4>
+            <small>{{cartItem.car.modelName}}</small>
+          </h4>
+        </div>
+        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+          <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 9px">
+            <h6><strong>{{cartItem.car.dailyPrice}} TL</strong></h6>
+          </div>
+          <div class="col-4 col-sm-4 col-md-4" >
+            <div class="col-xs-4">
+              <input type="text" disabled class="form-control input-sm" value="1">
+            </div>
+          </div>
+          <div class="col-2 col-sm-2 col-md-2 text-right">
+            <button (click)="removeFromCart(cartItem.car)" class="btn btn-outline-danger btn-xs">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <!-- <div class="returnDate date">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp" [(ngModel)]="rentDate" ngbDatepicker
+                 [minDate]=minRentDate" [readOnly]="true"
+                 #d="ngbDatepicker" (ngModelChange)="checkCarReturnDate()">
+          <div class="input-group-append">
+            <button class="glow-on-hover" (click)="d.toggle()" type="button">Alış Tarihi</button>
+          </div>
+        </div> -->
+        <!-- <div class="rentDate date">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp2" [(ngModel)]="model" ngbDatepicker
+                 [minDate]="minRentalDate" [readOnly]="true"
+                 #d2="ngbDatepicker" (ngModelChange)="calculatePrice()">
+          <div class="input-group-append">
+            <button class="glow-on-hover" (click)="d2.toggle()" type="button">Teslim Tarihi</button>
+          </div> -->
+        </div>
+
+        <div class="totalPrice date">
+          <div class="totalPrice">
+            Toplam Fiyat: <b>{{totalPrice}}
+            <i class="fa fa-try" aria-hidden="true"></i>
+          </b>
+          </div>
+          <button (click)="createRental()" class="glow-on-hover"> Ödemeye Git
+          </button>
+        </div>
+        <br>
+      </div>
+
+    </div>
+  </div>
+<!-- </div> -->

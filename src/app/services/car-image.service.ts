@@ -16,7 +16,7 @@ export class CarImageService {
   getAll():Observable<ListResponseModel<CarImage>>{
     return this.httpClient.get<ListResponseModel<CarImage>>(this.apiUrl+'carimages')
   }
-  deleteeImage(carImage:CarImage):Observable<ResponseModel>{
+  deleteImage(carImage:CarImage):Observable<ResponseModel>{
     let newPath=this.apiUrl+"carimages/delete";
     return this.httpClient.post<ResponseModel>(newPath,carImage)
   }
