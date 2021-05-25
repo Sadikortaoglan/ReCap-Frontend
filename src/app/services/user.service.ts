@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { FakeFindeksModel } from '../models/fakeFindeksModel';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 import { User } from '../models/user';
 
 @Injectable({
@@ -32,5 +34,8 @@ export class UserService {
       password: user.password
     });
 
+  }
+  fakeFindeks(findeksModel:FakeFindeksModel):Observable<SingleResponseModel<FakeFindeksModel>>{
+    return this.httpClient.post<SingleResponseModel<FakeFindeksModel>>(this.apiUrl+'users/getuserfindeks',findeksModel)
   }
 }

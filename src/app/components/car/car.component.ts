@@ -14,6 +14,7 @@ export class CarComponent implements OnInit {
   apiUrl=environment.baseUrl;
   dataLoaded=false;
   filterText="";
+  filterColorText="";
 
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
 

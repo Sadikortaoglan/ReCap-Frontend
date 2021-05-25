@@ -21,9 +21,11 @@ export class BrandUpdateComponent implements OnInit {
               private activatedRoute:ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.load();
   }
 
   load(){
+    this.updateBrand
 
   }
   updateBrand()

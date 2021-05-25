@@ -1,61 +1,57 @@
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink=""> <i class="fa fa-car"></i> Rent A Car</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">
-          <i class="fa fa-home"></i>
-          Anasayfa
-          <span class="sr-only">(current)</span>
+<nav class="navbar navbar-expand-lg" style="background-color: #282e2b">
+  <div class="container-fluid">
+    <a routerLink="" class="navbar-brand" style="color: white;">ReCap</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul  class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li ><a  routerLink="" class="nav-link px-2 text-white">Ana Sayfa</a></li>
+        <li><a routerLink="cars" class="nav-link px-2 text-white">Araçlar</a></li>
+        <li><a routerLink="brands" class="nav-link px-2 text-white">Markalar</a></li>
+        <li><a routerLink="color" class="nav-link px-2 text-white">Renkler</a></li>
+        <li><a routerLink="rentals" class="nav-link px-2 text-white">Kiralamalar</a></li>
+      </ul>
+
+      <div class="text-end" *ngIf="checkToEmail()==false">
+        <button id="login"routerLink="login" type="button" class="btn btn-secondary" >
+            Giriş yap
+        </button>
+        <button routerLink="register" type="button" class="btn btn-secondary">
+             Kayıt ol
+        </button>
+      </div>
+      <div class="dropdown text-end" *ngIf="checkToEmail()==true">
+        <a
+         
+          class="d-block link-dark text-decoration-none dropdown-toggle"
+          id="dropdownUser1"
+          data-bs-toggle="dropdown"
+          aria-expanded="true"
+           type="button"
+           style="color: white;"
+        >
+        
+        {{this.user.firstName}} {{this.user.lastName}}
+        
         </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/cart">
-          <i class="fa fa-shopping-cart"></i>
-          Sepete Git
-        </a>
-      </li>
-
-      <li class="nav-item" *ngIf="check==false">
-        <a class="nav-link" routerLink="/login">
-          <i class="fa fa-sign-in"></i>
-          Giriş Yap
-        </a>
-      </li>
-
-      <li class="nav-item" *ngIf="check==false">
-        <a class="nav-link" routerLink="/register">
-          <i class="fa fa-user-plus"></i>
-          Kayıt Ol
-        </a>
-      </li>
-
-      <li class="nav-item" *ngIf="this.checkAdmin()">
-        <a class="nav-link" routerLink="/adminpanel">
-          <i class="fa fa-unlock-alt"></i>
-          Admin Paneli
-        </a>
-      </li>
-
-    </ul>
-
-    <ul class="nav navbar-nav ml-auto" *ngIf="checkToEmail()==true">
-      <li class="nav-item dropdown">
-        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <i class="fa fa-user">
-            <span class="badge badge-primary"></span>
-          </i>
-          {{this.user.firstName}} {{this.user.lastName}}</a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a routerLink="/profile"  class="dropdown-item"><i class="fa fa-pencil fa-fw"></i> Ayarlar</a>
-          <div class="dropdown-divider"></div>
-            <a href="" class="dropdown-item" (click)="logOut()"  ><i class="fa fa-sign-out"></i> Çıkış Yap</a>
+        
+        <div class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a routerLink="/profil" class="dropdown-item">Profil düzenle</a></li>
+          <li><a routerLink="cars/add" class="dropdown-item">Araba ekle</a></li>
+          <li><a class="dropdown-item disabled">Ayarlar</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <a (click)="logOut()" class="dropdown-item">Çıkış yap</a>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </nav>

@@ -1,11 +1,13 @@
 <!-- <select
   (change)="setCurrentBrand()"
+  [(ngModel)]="currentBrand"
   class="form-control mb-1"
   aria-label="Default select example">
-  <option [selected]="allBrandSelected()" >
+  <option [selected]="allBrandSelected()" [ngValue]="allBrand">
     Tüm Araçları Getir
   </option>
-  <option *ngFor="let brand of brands">
+  <option *ngFor="let brand of brands" [ngValue]="brand">
     {{ brand.brandName }}
   </option>
 </select> -->
+

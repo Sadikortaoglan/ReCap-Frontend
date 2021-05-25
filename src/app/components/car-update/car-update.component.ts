@@ -1,17 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { Color } from 'src/app/models/color';
-import { AuthService } from 'src/app/services/auth.service';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
-import { ToastrService } from 'ngx-toastr';
-import { CarDetail } from 'src/app/models/carDetail';
-import { observable } from 'rxjs';
-
-
 
 @Component({
   selector: 'app-car-update',
@@ -20,69 +16,79 @@ import { observable } from 'rxjs';
 })
 export class CarUpdateComponent implements OnInit {
   carUpdateForm: FormGroup;
-  currentCar: Car;
-  brands:Brand[]=[]
-  colors:Color[]=[]
-  @Input() carForUpdate:CarDetail
+  brands: Brand[] = [];
+  colors: Color[] = [];
+  carId: number;
+  cars:Car[];
+
   constructor(private formBuilder: FormBuilder,
-    private carService: CarService,
-    private toastrService: ToastrService,
-    private brandService:BrandService,
-    private colorService:ColorService,
-    private authService:AuthService) {}
+              private carService: CarService,
+              private toastrService: ToastrService,
+              private brandService: BrandService,
+              private colorService: ColorService,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.load();
   }
-updateCar(){
-  
-  let carModel:Car=Object.assign({},this.carUpdateForm.value);
-  carModel.carId=this.carForUpdate.carId
-  this.carService.updateCar(carModel).subscribe(result=>{
-    this.toastrService.success(result.message);
-  },resultError=>{
-    this.toastrService.error(resultError.error.message);
-  });
-}
-createCarUpdateForm(){
-  this.carUpdateForm=this.formBuilder.group({
-    brandId:[this.carForUpdate?this.carForUpdate.brandId:"",Validators.required],
-    colorId:[this.carForUpdate?this.carForUpdate.colorId:"",Validators.required],
-    modelYear:[this.carForUpdate?this.carForUpdate.modelYear:"",Validators.required],
-    dailyPrice:[this.carForUpdate?this.carForUpdate.dailyPrice:"",Validators.required],
-    desciption:[this.carForUpdate?this.carForUpdate.description:"",Validators.required],
-    minFibdeksScore:[this.carForUpdate?this.carForUpdate.minFindeksScore:"",Validators.required]
-  });
-}
-Update(){
-  let carModel:Car=Object.assign({},this.carUpdateForm.value);
-  carModel.carId=this.carForUpdate.carId;
-  this.carService.updateCar(carModel).subscribe(result=>{
-    this.toastrService.success(result.message);
-  },resultError=>{
-    this.toastrService.error(resultError.error.message);
-  });
-}
-getCurrentCar(){
-  return this.carService.getCurrentCar();
-}
-getBrands(){
-  this.brandService.getBrands().subscribe(result=>{
-    this.brands=result.data;
-  })
-}
-  getColors(){
-    this.colorService.getColors().subscribe(result=>{
-      this.colors=result.data;
+
+  load(){
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id']) {
+        this.carId = parseInt(params['id']);
+      }
+    });
+    this.createCarUpdateForm();
+    this.brandList();
+    this.colorList();
+    this.getCarIdList();
+  }
+
+  createCarUpdateForm() {
+    this.carUpdateForm = this.formBuilder.group({
+      id:["",Validators.required],
+      brandId: ['', Validators.required],
+      colorId: ['', Validators.required],
+      modelYear: ['', Validators.required],
+      dailyPrice: ['', Validators.required],
+      description: ['', Validators.required],
+      modelName:['',Validators.required]
+    });
+  }
+
+  brandList() {
+    this.brandService.getBrands().subscribe(response => {
+      this.brands = response.data;
+    });
+  }
+
+  colorList() {
+    this.colorService.getColors().subscribe(response => {
+      this.colors = response.data;
+    });
+  }
+
+  getCarIdList(){
+    this.carService.getCars().subscribe(response=>{
+      this.cars = response.data
     })
   }
-  checkToLogin(){
-    if(this.authService.isAuthenticated()){
-      return true;
-    }else{
-      return false;
+
+  updateCar() {
+    if (this.carUpdateForm.valid) {
+      let carModel = Object.assign({}, this.carUpdateForm.value);
+      this.carService.updateCar(carModel).subscribe(response => {
+        this.toastrService.success(response.message, 'Başarılı');
+      }, error => {
+        if (error.error.Errors.length > 0) {
+          for (let i = 0; i < error.error.Errors.length; i++) {
+            this.toastrService.error(error.error.Errors[i].ErrorMessage, 'Doğrulama hatası');
+          }
+        }
+      });
+    } else {
+      this.toastrService.error('Form Bilgileriniz Eksik!', 'Hata');
     }
   }
-  
 }
 
-  

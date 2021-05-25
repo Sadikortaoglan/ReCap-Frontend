@@ -1,1 +1,28 @@
-<p>user-table works!</p>
+<div class="d-flex" id="wrapper">
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <br>
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.status}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

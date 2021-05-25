@@ -1,4 +1,4 @@
-export interface Car{
+export class Car{
   carId:number;
   brandId:number;
   brandName:string;
@@ -10,5 +10,6 @@ export interface Car{
   description:string;
   imageId:number;
   imagePath:string;
-  date:Date;  
+  date:Date;
+  findeksScore:number;
 }

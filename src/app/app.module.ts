@@ -12,7 +12,6 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { CarComponent } from './components/car/car.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
-import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { from } from 'rxjs';
@@ -40,6 +39,14 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
 import { CarImageUpdateComponent } from './components/car-image-update/car-image-update.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { FilterCarPipe } from './pipes/filter-car.pipe';
+import { FiterColorPipe } from './pipes/fiter-color.pipe';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { SidebarComponent } from './components/admin-panel/sidebar/sidebar.component';
+import { NavbarComponent } from './components/admin-panel/navbar/navbar.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { ProfileComponent } from './components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +62,6 @@ import { RentalComponent } from './components/rental/rental.component';
     CarAddComponent,
     BrandAddComponent,
     ColorAddComponent,
-    CarUpdateComponent,
     ColorUpdateComponent,
     BrandUpdateComponent,
     FooterComponent,
@@ -72,6 +78,16 @@ import { RentalComponent } from './components/rental/rental.component';
     CustomerTableComponent,
     CarImageAddComponent,
     CarImageUpdateComponent,
+    FilterCarPipe,
+    FiterColorPipe,
+    AdminPanelComponent,
+    ColorComponent,
+    SidebarComponent,
+    NavbarComponent,
+    CarUpdateComponent,
+    PaymentComponent,
+    ProfileComponent
+
   ],
   imports: [
     BrowserModule,
@@ -82,7 +98,8 @@ import { RentalComponent } from './components/rental/rental.component';
       positionClass:"toastr-bottom-right"
     }),
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

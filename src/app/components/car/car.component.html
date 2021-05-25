@@ -1,4 +1,4 @@
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
       <div class="col-md-3" style="margin-top: 20px;">
         <app-filter></app-filter>
@@ -12,7 +12,7 @@
 
       <div class="col-md-9">
         <div *ngIf="dataLoaded==false" class="spinner-border" role="status" style="margin-top: 35px; margin-left: 15px;">
-          <span class="visually-hidden">Loading...</span>
+          <span class="visually-hidden"></span>
         </div>
         <div class="row" id="ads" *ngIf="dataLoaded==true">
           <div  class="col-12 col-sm-11 col-md-9 col-lg-5 col-xl-4 " *ngFor="let car of cars">
@@ -32,7 +32,7 @@
                   <div class="ad-title text-center">
                     <h5>{{car.brandName}} {{car.modelName}}</h5>
                   </div>
-                  <button type="button" routerLink="/car/details/{{car}}" class="ad-btn" style="border-radius: 80px; width: 50%">Detaylar</button>
+                   <button type="button" routerLink="/car/details/{{car.carId}}" class="ad-btn" style="border-radius: 80px; width: 50%">Detaylar</button> 
                 </div>
               </div>
             </div>
