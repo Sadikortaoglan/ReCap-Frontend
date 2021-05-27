@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService:AuthService,
               private toastrService:ToastrService,
               private formBuilder:FormBuilder,
+              private localStorageService:LocalStorageService,
               private router:Router) { }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
       let loginModel = Object.assign({},this.loginForm.value);
       this.authService.login(loginModel).subscribe(response=>{
         this.toastrService.success("Başarıyla Giriş Yapıldı")
+        this.localStorageService.set("token",response.data.token)
         this.router.navigate(["/"]).then(r => window.location.reload())
 
       },responseError=>{

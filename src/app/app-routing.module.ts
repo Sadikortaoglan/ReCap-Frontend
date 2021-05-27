@@ -5,7 +5,6 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
 import { BrandTableComponent } from './components/brand-table/brand-table.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
-import { BrandComponent } from './components/brand/brand.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
@@ -21,7 +20,6 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 import { ColorTableComponent } from './components/color-table/color-table.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
-import { ColorComponent } from './components/color/color.component';
 import { CustomerTableComponent } from './components/customer-table/customer-table.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
@@ -39,14 +37,14 @@ const routes: Routes = [
 
   //Admin
   {path:"adminpanel", component:AdminPanelComponent,canActivate:[LoginGuard]},
- {path:"adminpanel/profile", component:ProfileComponent,canActivate:[LoginGuard]},
+  {path:"adminpanel/profile", component:ProfileComponent,canActivate:[LoginGuard]},
   {path:"adminpanel/users",component:UserTableComponent,canActivate:[LoginGuard]},
   {path:"adminpanel/customer",component:CustomerTableComponent,canActivate:[LoginGuard]},
 
   //Car
   {path:"adminpanel/car",component:CarTableComponent,canActivate:[LoginGuard]},
   {path:"adminpanel/car/add",component:CarAddComponent,canActivate:[LoginGuard]},
- {path:"adminpanel/car/update",component:CarUpdateComponent,canActivate:[LoginGuard]},
+  {path:"adminpanel/car/update",component:CarUpdateComponent,canActivate:[LoginGuard]},
   {path:"adminpanel/car/delete",component:CarDeleteComponent,canActivate:[LoginGuard]},
   {path:"adminpanel/car/imagedelete",component:CarImageDeleteComponent,canActivate:[LoginGuard]},
   {path:"adminpanel/car/imageadd",component:CarImageAddComponent,canActivate:[LoginGuard]},

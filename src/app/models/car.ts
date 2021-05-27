@@ -9,7 +9,7 @@ export class Car{
   dailyPrice:number;
   description:string;
   imageId:number;
-  imagePath:string;
+  ImagePath:string;
   date:Date;
   findeksScore:number;
 }

@@ -9,27 +9,28 @@ import{Filters} from '../../models/filters';
 })
 export class FilterComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  setRoute(){
-    if (Filters['brandId']&&Filters['colorId']){
+  setRoute() {
+    if (Filters['brandId'] && Filters['colorId']) {
       this.router.navigate([
         `cars/brand/${Filters.brandId}/color/${Filters.colorId}`,
       ]);
-    }else if (Filters['brandId']){
+    } else if (Filters['brandId']) {
       this.router.navigate([`cars/brand/${Filters.brandId}`]);
-      }else if (Filters['colorId']){
-        this.router.navigate([`cars/color/${Filters.colorId}`]);
-      }else{
-        this.router.navigate([`cars/`])
-      }
+    } else if (Filters['colorId']) {
+      this.router.navigate([`cars/color/${Filters.colorId}`]);
+    } else {
+      this.router.navigate([`cars/`]);
     }
-    clearRoute(){
-      this.router.navigate([`cars/`])
-    }
+  }
 
+  clearRoute() {
+    this.router.navigate([`cars/`]);
+  }
 
 }

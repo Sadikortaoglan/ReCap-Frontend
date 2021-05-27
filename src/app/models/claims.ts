@@ -1,4 +1,4 @@
 export interface Claims{
-    Id:number;
+    id:number;
     name:string;
 }

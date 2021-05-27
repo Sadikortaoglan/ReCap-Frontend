@@ -32,7 +32,7 @@ this.getImages();
       carId=carId;
       date:Date;
       id=imageId;
-      imagePath: string;
+      ImagePath: string;
     }).subscribe(response=>{
       window.location.reload();
       this.toastrService.success("Başarıyla Silinmiştir.");

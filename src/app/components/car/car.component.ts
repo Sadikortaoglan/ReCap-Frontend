@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { faLiraSign } from '@fortawesome/free-solid-svg-icons';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-car',
@@ -14,7 +16,7 @@ export class CarComponent implements OnInit {
   apiUrl=environment.baseUrl;
   dataLoaded=false;
   filterText="";
-  filterColorText="";
+  faLira=faLiraSign
 
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
 

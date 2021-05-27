@@ -19,7 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ColorComponent } from './components/color/color.component';
-import { FilterPipe } from './pipes/filter.pipe';
 import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -47,6 +46,10 @@ import { NavbarComponent } from './components/admin-panel/navbar/navbar.componen
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,20 +89,24 @@ import { ProfileComponent } from './components/profile/profile.component';
     NavbarComponent,
     CarUpdateComponent,
     PaymentComponent,
-    ProfileComponent
+    ProfileComponent,
+    FilterPipePipe,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FontAwesomeModule,
     FormsModule,
+
     ToastrModule.forRoot({
       positionClass:"toastr-bottom-right"
     }),
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
