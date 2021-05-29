@@ -15,8 +15,11 @@ export class CarImageUpdateComponent implements OnInit {
   constructor(private carService:CarService) { }
 
   ngOnInit(): void {
+  this.load();
   }
+
   load(){
+    this.getCars();
 
   }
   getCars(){

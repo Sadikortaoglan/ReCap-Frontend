@@ -16,7 +16,7 @@ export class CarComponent implements OnInit {
   apiUrl=environment.baseUrl;
   dataLoaded=false;
   filterText="";
-  faLira=faLiraSign
+  faLira=faLiraSign;
 
   constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
 

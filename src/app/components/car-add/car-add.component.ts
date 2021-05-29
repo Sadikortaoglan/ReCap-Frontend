@@ -15,22 +15,26 @@ import { ColorService } from 'src/app/services/color.service';
   styleUrls: ['./car-add.component.css']
 })
 export class CarAddComponent implements OnInit {
-carAddForm:FormGroup;
-brands:Brand[];
-colors:Color[];
-cars:Car[];
+  carAddForm:FormGroup;
+  brands:Brand[];
+  colors:Color[];
+  cars:Car[];
 
   constructor(private carService:CarService,
               private formBuilder:FormBuilder,
-              private colorService:ColorService,
               private toastrService:ToastrService,
-              private brandService:BrandService            
-    ) { }
+              private brandService:BrandService,
+              private colorService:ColorService) { }
 
   ngOnInit(): void {
+    this.load();
   }
-  load(){
 
+  load(){
+    this.createCarAddForm();
+    this.brandList();
+    this.colorList();
+    this.getCarIdList();
   }
 
   createCarAddForm(){
@@ -42,18 +46,26 @@ cars:Car[];
       description:["",Validators.required],
       modelName:["",Validators.required],
     })
-
   }
+
   getCarIdList(){
     this.carService.getCars().subscribe(response=>{
-      this.colors=response.data;
-    });
+     this.cars = response.data
+    })
   }
+
+  brandList(){
+    this.brandService.getBrands().subscribe(response=>{
+      this.brands = response.data;
+    })
+  }
+
   colorList(){
-    this.colorService.getColors().subscribe(response=>{
-      this.colors=response.data;
-    });
+    this.colorService.getColors().subscribe(response=> {
+      this.colors = response.data;
+    })
   }
+
   addToCar(){
     if(this.carAddForm.valid){
       let carModel = Object.assign({},this.carAddForm.value);
@@ -70,4 +82,5 @@ cars:Car[];
       this.toastrService.error("Formunuz eksik","Dikkat!")
     }
   }
+
 }

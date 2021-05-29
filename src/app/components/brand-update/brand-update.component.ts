@@ -25,7 +25,7 @@ export class BrandUpdateComponent implements OnInit {
   }
 
   load(){
-    this.updateBrand
+    this.updateBrand();
 
   }
   updateBrand()
